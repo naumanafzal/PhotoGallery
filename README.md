@@ -3,7 +3,7 @@ PhotoGallery
 
 To Run the Code 
 
-Please Signup on https://api.unsplash.com and Replace client_id in string.xml file
+Please Signup on https://api.unsplash.com and Replace client_id in strings.xml file
 
 To give you an opportunity to showcase your engineering knowledge and skills, this take home
 exercise will have you build a simple but non trivial mobile app. During your interview, this app
