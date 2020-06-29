@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="com.mna.photogallery.viewmodel.PhotosViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.MainActivity">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/relativeLayoutTop"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                android:text="Photos"
+                android:textColor="@color/colorBackground"
+                android:id="@+id/textViewTitle"
+                android:textSize="16dp" />
+
+        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listOfPhotos"
+            android:layout_marginTop="25dp"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="2dp"
+            app:setAdapter="@{model.getAdapter()}" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:id="@+id/spinnerLoading"
+            android:indeterminate="true"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:visibility="@{model.loading}"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{model.showEmpty}"
+            android:onClick="@{()->model.retry()}"
+            android:text="No photos were returned.\n  Click me to try again."/>
+
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

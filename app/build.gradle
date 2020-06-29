@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "com.mna.photogallery"
+        minSdkVersion 26
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding.enabled = true
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+ext {
+    retrofit_version = '2.9.0'
+    constraints_layout = '1.1.3'
+    logging_interceptor = '3.11.0'
+    glide_version = '4.8.0'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "androidx.constraintlayout:constraintlayout:$constraints_layout"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$glide_version"
+
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    testImplementation "junit:junit:4.12"
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation 'org.mockito:mockito-core:2.19.0'
+    androidTestImplementation "androidx.test.ext:junit:1.1.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
+    androidTestImplementation 'org.mockito:mockito-android:2.19.0'
+}

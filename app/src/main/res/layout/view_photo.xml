@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <variable
+            name="viewModel"
+            type="com.mna.photogallery.viewmodel.PhotosViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{() -> viewModel.onItemClick(position)}"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/imageViewPhoto"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/list_item_image_border"
+            android:scaleType="centerCrop"
+            app:imageUrl='@{viewModel.getPhotoAt(position).photoURL}' />
+            />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:text="@{viewModel.getPhotoAt(position).description}"
+            android:textSize="16dp"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/imageViewPhoto"
+            android:layout_toLeftOf="@+id/imageViewNext"
+            tools:text="Test" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/imageViewNext"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_chevron_right_black_24dp"
+            android:scaleType="centerCrop" />
+        />
+    </RelativeLayout>
+</layout>
