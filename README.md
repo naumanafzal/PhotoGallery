@@ -1,5 +1,5 @@
-# PhotoLibrary
-PhotoLibrary
+# PhotoGallery
+PhotoGallery
 
 To Run the Code 
 
